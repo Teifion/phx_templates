@@ -1,0 +1,87 @@
+<% {fg, bg, bsname} = colours() %>
+
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+    sidebar_active('modulename');
+    tint_page("<%= fg %>", "<%= bg %>");
+
+    var selected_tab = window.location.hash.substr(1).replace("_tab", "");
+    if (selected_tab.substring(0, 7) == "stages-") {selected_tab = "stages";}
+    $('#the_tabs a:first').tab('show');
+    $('#the_tabs [href="#' + selected_tab + '_tab"]').click();
+
+    page_quick_actions = [
+      {label: "Edit classname", icon: "<%= icon() %>", url: "<%= Routes.appname_classname_path(@conn, :edit, @classname) %>", keywords: ["edit", "classname", "edit classname"]},
+    ];
+  });
+</script>
+
+<%= render CentralWeb.Modulename.GeneralView, "sub_menu.html", Map.merge(assigns, %{active: "classnames"}) %>
+
+<div class="row section-menu">
+  <div class="col-md-12">
+    <div class="card border-<%= bsname %>">
+      <div class="card-body">
+        <%= render AppnameWeb.Modulename.ClassnameView, "section_menu.html", Map.merge(assigns, %{
+            show_search: false,
+            active: ""
+        }) %>
+        <hr />
+        
+        <div class="float-right">
+          <a href="<%= Routes.appname_classname_path(@conn, :edit, @classname) %>" class="btn btn-outline-<%= bsname %>">
+            <i class="far fa-fw fa-wrench"></i>
+            Edit classname
+          </a>
+        </div>
+
+      <h3 style="color: <%= @classname.colour %>">
+        <%= @classname.name %>
+        &nbsp;
+        <i class="far fa-fw <%= @classname.icon %>"></i>
+      </h3>
+      <br />
+      <ul class="nav nav-tabs" role="tablist" id="the_tabs">
+        <%= if false do %>
+        <li>
+          <a href="#details_tab" role="tab" class="nav-link" data-toggle="tab">
+            <%= component "icon", icon: "fas fa-file-alt" %>
+            Details
+          </a>
+        </li>
+        <% end %>
+
+        <li>
+          <a href="#activities_tab" role="tab" class="nav-link" data-toggle="tab">
+            <%= component "icon", icon: CentralWeb.Modulename.ActivityView.icon() %>
+            Activities
+          </a>
+        </li>
+        
+        <li>
+          <a href="#users_tab" role="tab" class="nav-link" data-toggle="tab">
+            <%= component "icon", icon: CentralWeb.Modulename.StaffView.icon() %>
+            Staff
+          </a>
+        </li>
+      </ul>
+    
+      <div class="tab-content">
+        <div class="tab-pane" id="details_tab" style="padding:5px;">
+          <%= render "tab_details.html", assigns %>
+        </div>
+
+        <div class="tab-pane" id="activities_tab" style="padding:5px;">
+          <%= render "tab_activities.html", assigns %>
+        </div>
+
+        <div class="tab-pane" id="users_tab" style="padding:5px;">
+          <%= render "tab_users.html", assigns %>
+        </div>
+      </div>
+      <%# END OF TABS %>
+
+      </div>
+    </div>
+  </div>
+</div>
