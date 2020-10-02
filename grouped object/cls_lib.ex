@@ -96,7 +96,7 @@ defmodule Appname.Modulename.ClassnameLib do
 
   @spec preload(Ecto.Query.t, List.t | nil) :: Ecto.Query.t
   def preload(query, nil), do: query
-  def preload(query, preloads) do
+  def preload(query, _preloads) do
     # query = if :things in preloads, do: _preload_things(query), else: query
     query
   end

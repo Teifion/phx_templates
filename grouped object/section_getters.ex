@@ -1,5 +1,19 @@
   alias Appname.Modulename.Classname
   alias Appname.Modulename.ClassnameLib
+  
+  defp classname_query(args) do
+    classname_query(nil, args)
+  end
+
+  defp classname_query(id, args) do
+    ClassnameLib.get_classnames
+    |> ClassnameLib.search(%{id: id})
+    |> ClassnameLib.search(args[:search])
+    |> ClassnameLib.preload(args[:joins])
+    |> ClassnameLib.order(args[:order])
+    |> QueryHelpers.select(args[:select])
+  end
+  
   @doc """
   Returns the list of classnames.
 
@@ -11,10 +25,7 @@
   """
   def list_classnames(args \\ []) do
     ClassnameLib.get_classnames
-    |> ClassnameLib.search(args[:search])
-    |> ClassnameLib.preload(args[:joins])
-    |> ClassnameLib.order_by(args[:order_by])
-    |> QueryHelpers.select(args[:select])
+    |> QueryHelpers.limit_query(args[:limit] || 50)
     |> Repo.all
   end
 
@@ -32,12 +43,22 @@
       ** (Ecto.NoResultsError)
 
   """
-  def get_classname!(id, args \\ []) do
-    ClassnameLib.get_classnames
-    |> ClassnameLib.search(%{id: id})
-    |> ClassnameLib.search(args[:search])
-    |> ClassnameLib.preload(args[:joins])
+  def get_classname!(id) when not is_list(id) do
+    classname_query(id, [])
     |> Repo.one!
+  end
+  def get_classname!(args) do
+    classname_query(nil, args)
+    |> Repo.one!
+  end
+  def get_classname!(id, args) do
+    classname_query(id, args)
+    |> Repo.one!
+  end
+
+  def get_classname(id, args \\ []) when not is_list(id) do
+    classname_query(id, args)
+    |> Repo.one
   end
 
   @doc """

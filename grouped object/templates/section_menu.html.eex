@@ -1,27 +1,22 @@
 <% {_fg, _bg, bsname} = colours() %>
 
-<script type="text/javascript" charset="utf-8">
-  $(function() {
-    $('#section-menu-<%= @active %>').addClass('active');
-    if (!$('#section-menu-<%= @active %> i').hasClass("fab")) {
-      $('#section-menu-<%= @active %> i').addClass('fas');
-      $('#section-menu-<%= @active %> i').removeClass('far');
-      $('#section-menu-<%= @active %> i').removeClass('fal');
-    }
-  });
-</script>
+<%= component "section_menu_button",
+  name: "index",
+  label: "List",
+  active: @active,
+  icon: "far fa-bars",
+  bsname: bsname,
+  url: Routes.appname_classname_path(@conn, :index)
+%>
 
-<a href="<%= Routes.appname_classname_path(@conn, :index) %>" class="btn btn-outline-<%= bsname %>" id="section-menu-index">
-  <i class="far fa-bars"></i>
-  &nbsp;
-  List
-</a>
-
-<a href="<%= Routes.appname_classname_path(@conn, :new) %>" class="btn btn-outline-<%= bsname %>" id="section-menu-new">
-  <i class="far fa-plus"></i>
-  &nbsp;
-  New
-</a>
+<%= component "section_menu_button",
+  name: "new",
+  label: "New",
+  active: @active,
+  icon: "far fa-plus",
+  bsname: bsname,
+  url: Routes.appname_classname_path(@conn, :new)
+%>
 
 <form action="<%= Routes.appname_classname_path(@conn, :index) %>" method="get" class="float-right form-inline d-none d-md-block">
   <div class="input-group">
