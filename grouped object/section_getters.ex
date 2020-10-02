@@ -56,10 +56,25 @@
     |> Repo.one!
   end
 
-  def get_classname(id, args \\ []) when not is_list(id) do
-    classname_query(id, args)
-    |> Repo.one
-  end
+  # Uncomment this if needed, default files do not need this function
+  # @doc """
+  # Gets a single classname.
+
+  # Returns `nil` if the Classname does not exist.
+
+  # ## Examples
+
+  #     iex> get_classname(123)
+  #     %Classname{}
+
+  #     iex> get_classname(456)
+  #     nil
+
+  # """
+  # def get_classname(id, args \\ []) when not is_list(id) do
+  #   classname_query(id, args)
+  #   |> Repo.one
+  # end
 
   @doc """
   Creates a classname.

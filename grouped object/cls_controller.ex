@@ -72,7 +72,10 @@ defmodule AppnameWeb.Modulename.ClassnameController do
         |> redirect(to: Routes.appname_classname_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        conn
+        |> assign(:changeset, changeset)
+        |> assign(:groups, GroupLib.dropdown(conn))
+        |> render("new.html")
     end
   end
 
@@ -108,7 +111,11 @@ defmodule AppnameWeb.Modulename.ClassnameController do
           |> put_flash(:info, "Classname updated successfully.")
           |> redirect(to: Routes.appname_classname_path(conn, :index))
         {:error, %Ecto.Changeset{} = changeset} ->
-          render(conn, "edit.html", classname: classname, changeset: changeset)
+          conn
+          |> assign(:groups, GroupLib.dropdown(conn))
+          |> assign(:classname, classname)
+          |> assign(:changeset, changeset)
+          |> render("edit.html")
       end
     else
       conn

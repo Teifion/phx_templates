@@ -11,6 +11,7 @@ def peform_grouped(parts):
   lname = get_lname(classname)
   Path(f"output/{lname}").mkdir(parents=True)
   Path(f"output/{lname}/templates").mkdir(parents=True)
+  Path(f"output/{lname}/tests").mkdir(parents=True)
 
   files = [
     "section_getters.ex",
@@ -25,6 +26,8 @@ def peform_grouped(parts):
     "templates/section_menu.html.eex",
     "templates/show.html.eex",
     "templates/tab_details.html.eex",
+    "tests/section_test.exs",
+    "tests/cls_controller_test.exs",
   ]
 
   for fpath in files:
