@@ -7,7 +7,7 @@
   });
 </script>
 
-<%= render CentralWeb.Modulename.GeneralView, "sub_menu.html", Map.merge(assigns, %{active: "classnames"}) %>
+<%= render AppnameWeb.Modulename.GeneralView, "sub_menu.html", Map.merge(assigns, %{active: "classnames"}) %>
 
 <div class="row section-menu">
   <div class="col-md-12">

@@ -3,8 +3,8 @@ defmodule Appname.Modulename.ClassnameLib do
   alias Appname.Modulename.Classname
 
   # Functions
-  def icon, do: "fas fa-???"
-  def colours, do: Central.Helpers.StylingHelper.colours(????)
+  def icon, do: "far fa-???"
+  def colours, do: Central.Helpers.StylingHelper.colours(:default)
 
   def make_favourite(classname) do
     %{
@@ -44,6 +44,11 @@ defmodule Appname.Modulename.ClassnameLib do
       where: classnames.id == ^id
   end
 
+  def _search(query, :name, name) do
+    from classnames in query,
+      where: classnames.name == ^name
+  end
+
   def _search(query, :membership, %{assigns: %{memberships: group_ids}}) do
     _search(query, :membership, group_ids)
   end
@@ -69,6 +74,16 @@ defmodule Appname.Modulename.ClassnameLib do
 
   @spec order_by(Ecto.Query.t, String.t | nil) :: Ecto.Query.t
   def order_by(query, nil), do: query
+  def order_by(query, "Name (A-Z)") do
+    from classnames in query,
+      order_by: [asc: classnames.name]
+  end
+
+  def order_by(query, "Name (Z-A)") do
+    from classnames in query,
+      order_by: [desc: classnames.name]
+  end
+
   def order_by(query, "Newest first") do
     from classnames in query,
       order_by: [desc: classnames.inserted_at]

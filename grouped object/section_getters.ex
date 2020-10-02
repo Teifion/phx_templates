@@ -14,6 +14,7 @@
     |> ClassnameLib.search(args[:search])
     |> ClassnameLib.preload(args[:joins])
     |> ClassnameLib.order_by(args[:order_by])
+    |> QueryHelpers.select(args[:select])
     |> Repo.all
   end
 

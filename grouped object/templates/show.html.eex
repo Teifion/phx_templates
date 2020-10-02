@@ -16,7 +16,7 @@
   });
 </script>
 
-<%= render CentralWeb.Modulename.GeneralView, "sub_menu.html", Map.merge(assigns, %{active: "classnames"}) %>
+<%= render AppnameWeb.Modulename.GeneralView, "sub_menu.html", Map.merge(assigns, %{active: "classnames"}) %>
 
 <div class="row section-menu">
   <div class="col-md-12">
@@ -42,26 +42,10 @@
       </h3>
       <br />
       <ul class="nav nav-tabs" role="tablist" id="the_tabs">
-        <%= if false do %>
         <li>
           <a href="#details_tab" role="tab" class="nav-link" data-toggle="tab">
             <%= component "icon", icon: "fas fa-file-alt" %>
             Details
-          </a>
-        </li>
-        <% end %>
-
-        <li>
-          <a href="#activities_tab" role="tab" class="nav-link" data-toggle="tab">
-            <%= component "icon", icon: CentralWeb.Modulename.ActivityView.icon() %>
-            Activities
-          </a>
-        </li>
-        
-        <li>
-          <a href="#users_tab" role="tab" class="nav-link" data-toggle="tab">
-            <%= component "icon", icon: CentralWeb.Modulename.StaffView.icon() %>
-            Staff
           </a>
         </li>
       </ul>
@@ -69,14 +53,6 @@
       <div class="tab-content">
         <div class="tab-pane" id="details_tab" style="padding:5px;">
           <%= render "tab_details.html", assigns %>
-        </div>
-
-        <div class="tab-pane" id="activities_tab" style="padding:5px;">
-          <%= render "tab_activities.html", assigns %>
-        </div>
-
-        <div class="tab-pane" id="users_tab" style="padding:5px;">
-          <%= render "tab_users.html", assigns %>
         </div>
       </div>
       <%# END OF TABS %>

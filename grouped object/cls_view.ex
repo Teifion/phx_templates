@@ -1,6 +1,6 @@
 defmodule AppnameWeb.Modulename.ClassnameView do
-  use CentralWeb, :view
+  use AppnameWeb, :view
 
-  def colours, do: AppnameWeb.Modulename.ClassnameLib.colours()
-  def icon, do: AppnameWeb.Modulename.ClassnameLib.icon()
+  def colours, do: Appname.Modulename.ClassnameLib.colours()
+  def icon, do: Appname.Modulename.ClassnameLib.icon()
 end

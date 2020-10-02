@@ -19,7 +19,7 @@ defmodule AppnameWeb.Modulename.ClassnameController do
         membership: conn,
         simple_search: Map.get(params, "s", "") |> String.trim,
       ],
-      order: "Name (A-Z)"
+      order_by: "Name (A-Z)"
     )
 
     conn
@@ -29,7 +29,7 @@ defmodule AppnameWeb.Modulename.ClassnameController do
 
   def show(conn, %{"id" => id}) do
     classname = Modulename.get_classname!(id, [
-      joins: [:activities, :users],
+      joins: [],
     ])
 
     if GroupLib.access?(conn, classname) do
@@ -56,7 +56,7 @@ defmodule AppnameWeb.Modulename.ClassnameController do
 
     conn
     |> assign(:changeset, changeset)
-    |> assign(:groups, GroupLib.extended_dropdown(conn))
+    |> assign(:groups, GroupLib.dropdown(conn))
     |> add_breadcrumb(name: "New classname", url: conn.request_path)
     |> render("new.html")
   end
@@ -85,7 +85,7 @@ defmodule AppnameWeb.Modulename.ClassnameController do
       conn
       |> assign(:classname, classname)
       |> assign(:changeset, changeset)
-      |> assign(:groups, GroupLib.extended_dropdown(conn))
+      |> assign(:groups, GroupLib.dropdown(conn))
       |> add_breadcrumb(name: "Edit: #{classname.name}", url: conn.request_path)
       |> render("edit.html")
     else
