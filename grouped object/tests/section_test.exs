@@ -2,9 +2,9 @@
   describe "classnames" do
     alias Appname.Modulename.Classname
 
-    @valid_attrs %{colour: "some colour", icon: "far fa-home", name: "some name", group_id: 1}
-    @update_attrs %{colour: "some updated colour", icon: "fas fa-wrench", name: "some updated name", group_id: 2}
-    @invalid_attrs %{colour: nil, icon: nil, name: nil, group_id: nil}
+    @valid_attrs %{"colour" => "some colour", "icon" => "far fa-home", "name" => "some name", "group_id" => 1}
+    @update_attrs %{"colour" => "some updated colour", "icon" => "fas fa-wrench", "name" => "some updated name", "group_id" => 2}
+    @invalid_attrs %{"colour" => nil, "icon" => nil, "name" => nil, "group_id" => nil}
 
     test "list_classnames/0 returns classnames" do
       ModulenameTestLib.classname_fixture(1)

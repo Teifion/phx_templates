@@ -47,8 +47,10 @@
       <a href="<%= Routes.appname_classname_path(@conn, :show, @classname) %>" class="btn btn-secondary btn-outline">
         Cancel
       </a>
+      
+      <input type="submit" value="Save changes" name="form.submitted" class="btn btn-<%= bsname %> float-right" />
+    <% else %>  
+      <input type="submit" value="Create" name="form.submitted" class="btn btn-<%= bsname %> float-right" />
     <% end %>
-    
-    <input type="submit" value="Save changes" name="form.submitted" class="btn btn-<%= bsname %> float-right" />
   </div>
 <% end %>

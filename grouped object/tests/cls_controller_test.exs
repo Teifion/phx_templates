@@ -23,7 +23,7 @@ defmodule AppnameWeb.Modulename.ClassnameControllerTest do
   describe "new classname" do
     test "renders form", %{conn: conn} do
       conn = get(conn, Routes.modulename_classname_path(conn, :new))
-      assert html_response(conn, 200) =~ "Save changes"
+      assert html_response(conn, 200) =~ "Create"
     end
   end
 
