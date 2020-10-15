@@ -9,7 +9,7 @@
       [%Location{}, ...]
 
   """
-  def list_part1_part2s_by_part1(part1_id) do
+  def list_part1_part2s_by_part1(part1_id, args \\ []) do
     Part1Part2Lib.get_part1_part2s
     |> Part1Part2Lib.search([part1_id: part1_id])
     |> Part1Part2Lib.search(args[:search])
@@ -19,7 +19,7 @@
     |> Repo.all
   end
 
-  def list_part1_part2s_by_part2(part2_id) do
+  def list_part1_part2s_by_part2(part2_id, args \\ []) do
     Part1Part2Lib.get_part1_part2s
     |> Part1Part2Lib.search([part2_id: part2_id])
     |> Part1Part2Lib.search(args[:search])

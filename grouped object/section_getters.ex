@@ -10,7 +10,7 @@
     |> ClassnameLib.search(%{id: id})
     |> ClassnameLib.search(args[:search])
     |> ClassnameLib.preload(args[:joins])
-    |> ClassnameLib.order(args[:order])
+    |> ClassnameLib.order_by(args[:order_by])
     |> QueryHelpers.select(args[:select])
   end
   
@@ -24,7 +24,7 @@
 
   """
   def list_classnames(args \\ []) do
-    ClassnameLib.get_classnames
+    classname_query(args)
     |> QueryHelpers.limit_query(args[:limit] || 50)
     |> Repo.all
   end

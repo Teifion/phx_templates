@@ -4,11 +4,14 @@ defmodule AppnameWeb.Modulename.ClassnameController do
   alias Appname.Modulename
   alias Appname.Modulename.Classname
   alias Appname.Modulename.ClassnameLib
-  
+
   plug Bodyguard.Plug.Authorize,
     policy: Appname.Modulename.Classname,
     action: {Phoenix.Controller, :action_name},
     user: {Central.Account.AuthLib, :current_user}
+
+  plug AssignPlug,
+    sidemenu_active: "modulename"
 
   plug :add_breadcrumb, name: 'Modulename', url: '/appname'
   plug :add_breadcrumb, name: 'Classnames', url: '/appname/classnames'
