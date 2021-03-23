@@ -19,7 +19,6 @@ defmodule AppnameWeb.Modulename.ClassnameController do
   def index(conn, params) do
     classnames = Modulename.list_classnames(
       search: [
-        membership: conn,
         simple_search: Map.get(params, "s", "") |> String.trim,
       ],
       order_by: "Name (A-Z)"

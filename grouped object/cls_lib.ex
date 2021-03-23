@@ -3,7 +3,9 @@ defmodule Appname.Modulename.ClassnameLib do
   alias Appname.Modulename.Classname
 
   # Functions
+  @spec icon :: String.t()
   def icon, do: "far fa-???"
+  @spec colours :: {String.t(), String.t(), String.t()}
   def colours, do: Central.Helpers.StylingHelper.colours(:default)
 
   def make_favourite(classname) do
@@ -21,7 +23,7 @@ defmodule Appname.Modulename.ClassnameLib do
     }
   end
 
-  # Queries  
+  # Queries
   @spec query_classnames() :: Ecto.Query.t
   def query_classnames do
     from classnames in Classname
@@ -52,7 +54,7 @@ defmodule Appname.Modulename.ClassnameLib do
   def _search(query, :membership, %{assigns: %{memberships: group_ids}}) do
     _search(query, :membership, group_ids)
   end
-  
+
   def _search(query, :membership, group_ids) do
     from classnames in query,
       where: classnames.group_id in ^group_ids
@@ -100,7 +102,7 @@ defmodule Appname.Modulename.ClassnameLib do
     # query = if :things in preloads, do: _preload_things(query), else: query
     query
   end
-  
+
   # def _preload_things(query) do
   #   from classnames in query,
   #     left_join: things in assoc(classnames, :things),
