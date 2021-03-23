@@ -1,6 +1,6 @@
   alias Appname.Modulename.Classname
   alias Appname.Modulename.ClassnameLib
-  
+
   def classname_query(args) do
     classname_query(nil, args)
   end
@@ -13,7 +13,7 @@
     |> ClassnameLib.order_by(args[:order_by])
     |> QueryHelpers.select(args[:select])
   end
-  
+
   @doc """
   Returns the list of classnames.
 

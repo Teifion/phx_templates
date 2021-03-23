@@ -21,7 +21,7 @@ defmodule Appname.Modulename.ClassnameLib do
     }
   end
 
-  # Queries  
+  # Queries
   @spec query_classnames() :: Ecto.Query.t
   def query_classnames do
     from classnames in Classname
@@ -47,15 +47,6 @@ defmodule Appname.Modulename.ClassnameLib do
   def _search(query, :name, name) do
     from classnames in query,
       where: classnames.name == ^name
-  end
-
-  def _search(query, :membership, %{assigns: %{memberships: group_ids}}) do
-    _search(query, :membership, group_ids)
-  end
-  
-  def _search(query, :membership, group_ids) do
-    from classnames in query,
-      where: classnames.group_id in ^group_ids
   end
 
   def _search(query, :id_list, id_list) do
@@ -100,7 +91,7 @@ defmodule Appname.Modulename.ClassnameLib do
     # query = if :things in preloads, do: _preload_things(query), else: query
     query
   end
-  
+
   # def _preload_things(query) do
   #   from classnames in query,
   #     left_join: things in assoc(classnames, :things),

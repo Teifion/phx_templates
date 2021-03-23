@@ -31,10 +31,8 @@
           </a>
         </div>
 
-      <h3 style="color: <%= @classname.colour %>">
+      <h3>
         <%= @classname.name %>
-        &nbsp;
-        <i class="far fa-fw <%= @classname.icon %>"></i>
       </h3>
       <br />
       <ul class="nav nav-tabs" role="tablist" id="the_tabs">
