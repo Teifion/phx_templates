@@ -9,6 +9,8 @@
       [%Location{}, ...]
 
   """
+  @spec list_part1_part2s_by_part1(Integer.t()) :: List.t()
+  @spec list_part1_part2s_by_part1(Integer.t(), List.t()) :: List.t()
   def list_part1_part2s_by_part1(part1_id, args \\ []) do
     Part1Part2Lib.get_part1_part2s
     |> Part1Part2Lib.search([part1_id: part1_id])
@@ -19,6 +21,8 @@
     |> Repo.all
   end
 
+  @spec list_part1_part2s_by_part2(Integer.t()) :: List.t()
+  @spec list_part1_part2s_by_part2(Integer.t(), List.t()) :: List.t()
   def list_part1_part2s_by_part2(part2_id, args \\ []) do
     Part1Part2Lib.get_part1_part2s
     |> Part1Part2Lib.search([part2_id: part2_id])
@@ -43,6 +47,7 @@
       ** (Ecto.NoResultsError)
 
   """
+  @spec get_part1_part2(Integer.t(), Integer.t()) :: Part1Part2.t()
   def get_part1_part2!(part1_id, part2_id) do
     Part1Part2Lib.get_part1_part2s
     |> Part1Part2Lib.search(%{part1_id: part1_id, part2_id: part2_id})
@@ -61,12 +66,14 @@
       {:error, %Ecto.Changeset{}}
 
   """
+  @spec get_part1_part2(Map.t()) :: {:ok, Part1Part2.t()} | {:error, Ecto.Changeset.t()}
   def create_part1_part2(attrs) do
     %Part1Part2{}
     |> Part1Part2.changeset(attrs)
     |> Repo.insert()
   end
 
+  @spec get_part1_part2(Integer.t(), Integer.t()) :: {:ok, Part1Part2.t()} | {:error, Ecto.Changeset.t()}
   def create_part1_part2(part1_id, part2_id) do
     %Part1Part2{}
     |> Part1Part2.changeset(%{
@@ -82,12 +89,13 @@
   ## Examples
 
       iex> update_part1_part2(part1_part2, %{field: new_value})
-      {:ok, %Ruleset{}}
+      {:ok, %Part1Part2{}}
 
       iex> update_part1_part2(part1_part2, %{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
+  @spec update_part1_part2(Part1Part2.t(), Map.t()) :: {:ok, Part1Part2.t()} | {:error, Ecto.Changeset.t()}
   def update_part1_part2(%Part1Part2{} = part1_part2, attrs) do
     part1_part2
     |> Part1Part2.changeset(attrs)
@@ -106,6 +114,7 @@
       {:error, %Ecto.Changeset{}}
 
   """
+  @spec delete_part1_part2(Part1Part2.t()) :: {:ok, Part1Part2.t()} | {:error, Ecto.Changeset.t()}
   def delete_part1_part2(%Part1Part2{} = part1_part2) do
     Repo.delete(part1_part2)
   end
@@ -119,6 +128,7 @@
       %Ecto.Changeset{source: %Part1Part2{}}
 
   """
+  @spec change_part1_part2(Part1Part2.t()) :: Ecto.Changeset.t()
   def change_part1_part2(%Part1Part2{} = part1_part2) do
     Part1Part2.changeset(part1_part2, %{})
   end

@@ -16,6 +16,7 @@ defmodule AppnameWeb.Modulename.ClassnameController do
   plug :add_breadcrumb, name: 'Modulename', url: '/appname'
   plug :add_breadcrumb, name: 'Classnames', url: '/appname/classnames'
 
+  @spec index(Plug.Conn.t(), Map.t()) :: Plug.Conn.t()
   def index(conn, params) do
     classnames = Modulename.list_classnames(
       search: [
@@ -29,6 +30,7 @@ defmodule AppnameWeb.Modulename.ClassnameController do
     |> render("index.html")
   end
 
+  @spec show(Plug.Conn.t(), Map.t()) :: Plug.Conn.t()
   def show(conn, %{"id" => id}) do
     classname = Modulename.get_classname!(id, [
       joins: [],
@@ -44,6 +46,7 @@ defmodule AppnameWeb.Modulename.ClassnameController do
     |> render("show.html")
   end
 
+  @spec new(Plug.Conn.t(), Map.t()) :: Plug.Conn.t()
   def new(conn, _params) do
     changeset = Modulename.change_classname(%Classname{})
 
@@ -53,6 +56,7 @@ defmodule AppnameWeb.Modulename.ClassnameController do
     |> render("new.html")
   end
 
+  @spec create(Plug.Conn.t(), Map.t()) :: Plug.Conn.t()
   def create(conn, %{"classname" => classname_params}) do
     case Modulename.create_classname(classname_params) do
       {:ok, _classname} ->
@@ -67,6 +71,7 @@ defmodule AppnameWeb.Modulename.ClassnameController do
     end
   end
 
+  @spec edit(Plug.Conn.t(), Map.t()) :: Plug.Conn.t()
   def edit(conn, %{"id" => id}) do
     classname = Modulename.get_classname!(id)
 
@@ -79,6 +84,7 @@ defmodule AppnameWeb.Modulename.ClassnameController do
     |> render("edit.html")
   end
 
+  @spec update(Plug.Conn.t(), Map.t()) :: Plug.Conn.t()
   def update(conn, %{"id" => id, "classname" => classname_params}) do
     classname = Modulename.get_classname!(id)
 
@@ -95,6 +101,7 @@ defmodule AppnameWeb.Modulename.ClassnameController do
     end
   end
 
+  @spec delete(Plug.Conn.t(), Map.t()) :: Plug.Conn.t()
   def delete(conn, %{"id" => id}) do
     classname = Modulename.get_classname!(id)
 

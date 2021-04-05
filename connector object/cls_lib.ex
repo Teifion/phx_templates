@@ -2,7 +2,7 @@ defmodule Appname.Modulename.Part1Part2Lib do
   use CentralWeb, :library
   alias Appname.Modulename.Part1Part2
 
-  # Queries  
+  # Queries
   @spec get_part1_part2s() :: Ecto.Query.t
   def get_part1_part2s do
     from part1_part2s in Part1Part2
@@ -17,6 +17,7 @@ defmodule Appname.Modulename.Part1Part2Lib do
     end)
   end
 
+  @spec _search(Ecto.Query.t, Atom.t(), any()) :: Ecto.Query.t
   def _search(query, _, ""), do: query
   def _search(query, _, nil), do: query
 

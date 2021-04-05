@@ -8,6 +8,7 @@ defmodule Appname.Modulename.ClassnameLib do
   @spec colours :: {String.t(), String.t(), String.t()}
   def colours, do: Central.Helpers.StylingHelper.colours(:default)
 
+  @spec make_favourite :: Map.t()
   def make_favourite(classname) do
     %{
       type_colour: colours() |> elem(0),
@@ -38,6 +39,7 @@ defmodule Appname.Modulename.ClassnameLib do
     end)
   end
 
+  @spec _search(Ecto.Query.t, Atom.t(), any()) :: Ecto.Query.t
   def _search(query, _, ""), do: query
   def _search(query, _, nil), do: query
 
