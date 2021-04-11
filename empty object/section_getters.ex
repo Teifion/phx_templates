@@ -131,7 +131,7 @@
       {:error, %Ecto.Changeset{}}
 
   """
-  @spec update_classname(Classname.t()) :: {:ok, Classname.t()} | {:error, Ecto.Changeset.t()}
+  @spec delete_classname(Classname.t()) :: {:ok, Classname.t()} | {:error, Ecto.Changeset.t()}
   def delete_classname(%Classname{} = classname) do
     Repo.delete(classname)
   end
@@ -145,7 +145,7 @@
       %Ecto.Changeset{source: %Classname{}}
 
   """
-  @spec update_classname(Classname.t()) :: Ecto.Changeset.t()
+  @spec change_classname(Classname.t()) :: Ecto.Changeset.t()
   def change_classname(%Classname{} = classname) do
     Classname.changeset(classname, %{})
   end

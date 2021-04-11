@@ -13,13 +13,13 @@ defmodule Appname.Modulename.Classname do
   @doc """
   Builds a changeset based on the `struct` and `params`.
   """
-  @spec changeset(Classname.t(), Map.t()) :: Ecto.Changeset.t()
+  @spec changeset(Map.t(), Map.t()) :: Ecto.Changeset.t()
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:part1_id, :part2_id])
     |> validate_required([:part1_id, :part2_id])
   end
 
-  @spec changeset(Atom.t(), Plug.Conn.t(), Map.t()) :: Boolean.t()
+  @spec authorize(Atom.t(), Plug.Conn.t(), Map.t()) :: Boolean.t()
   def authorize(_action, conn, _params), do: allow?(conn, "modulename")
 end
