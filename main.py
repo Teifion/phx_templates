@@ -174,7 +174,8 @@ def convert_connector_text(text, parts):
 def show_help():
   print("""
 usage:
-  python3 main.py simple Appname Modulename Classname Classplural
+  python3 main.py Empty Appname Modulename Classname Classplural
+  python3 main.py Simple Appname Modulename Classname Classplural
   python3 main.py Grouped Appname Modulename Classname Classplural
   python3 main.py Connector Appname Modulename Part1 Part2 Part2Plural
   

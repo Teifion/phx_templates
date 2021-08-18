@@ -8,7 +8,7 @@ defmodule Appname.Modulename.ClassnameLib do
   @spec colours :: {String.t(), String.t(), String.t()}
   def colours, do: Central.Helpers.StylingHelper.colours(:default)
 
-  @spec make_favourite :: Map.t()
+  @spec make_favourite(Map.t()) :: Map.t()
   def make_favourite(classname) do
     %{
       type_colour: colours() |> elem(0),
