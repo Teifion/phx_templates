@@ -29,7 +29,7 @@
 <%= for classname <- @classnames do %>
     <tr>
       <td style="background-color: <%= classname.colour %>; color: #FFF;" width="22">
-        <%= component "icon", icon: classname.icon %>
+        <%= central_component "icon", icon: classname.icon %>
       </td>
       <td><%= classname.name %></td>
 
@@ -38,7 +38,7 @@
           Show
         </a>
       </td>
-      
+
       <td>
         <a href="<%= Routes.appname_classname_path(@conn, :edit, classname.id) %>" class="btn btn-secondary btn-sm">
           Edit
