@@ -18,8 +18,8 @@ defmodule Appname.Modulename.Classname do
     |> trim_strings(~w(name)a)
 
     struct
-    |> cast(params, ~w(name icon colour))
-    |> validate_required(~w(name icon colour))
+    |> cast(params, ~w(name icon colour)a)
+    |> validate_required(~w(name icon colour)a)
   end
 
   @spec authorize(Atom.t(), Plug.Conn.t(), Map.t()) :: Boolean.t()
