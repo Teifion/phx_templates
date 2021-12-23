@@ -16,22 +16,14 @@
   </div>
 
   <div class="form-group">
-    <%= input_with_type f, :colour, "color" %>
-  </div>
-
-  <div class="form-group">
-    <%= central_component "fa5_icon_picker", %{form: f, field: :icon} %>
-  </div>
-
-  <div class="form-group">
     <%= if @changeset.data.id do %>
-      <a href="<%= Routes.appname_classname_path(@conn, :show, @classname) %>" class="btn btn-secondary btn-outline">
+      <a href={Routes.appname_classname_path(@conn, :show, @classname)} class="btn btn-secondary btn-outline">
         Cancel
       </a>
 
-      <input type="submit" value="Save changes" name="form.submitted" class="btn btn-<%= bsname %> float-right" />
+      <input type="submit" value="Save changes" name="form.submitted" class={"btn btn-#{bsname} float-right"} />
     <% else %>
-      <input type="submit" value="Create" name="form.submitted" class="btn btn-<%= bsname %> float-right" />
+      <input type="submit" value="Create" name="form.submitted" class={"btn btn-#{bsname} float-right"} />
     <% end %>
   </div>
 <% end %>

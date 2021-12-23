@@ -13,11 +13,11 @@ defmodule Appname.Modulename.Classname do
   @spec changeset(Map.t(), Map.t()) :: Ecto.Changeset.t()
   def changeset(struct, params \\ %{}) do
     params = params
-    |> trim_strings([:name])
+    |> trim_strings(~w(name)a)
 
     struct
-    |> cast(params, [:name])
-    |> validate_required([:name])
+    |> cast(params, ~w(name)a)
+    |> validate_required(~w(name)a)
   end
 
   @spec authorize(Atom.t(), Plug.Conn.t(), Map.t()) :: Boolean.t()

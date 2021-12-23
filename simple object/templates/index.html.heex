@@ -4,7 +4,7 @@
 
 <div class="row section-menu">
   <div class="col-md-12">
-    <div class="card border-<%= bsname %>">
+    <div class={"card border-#{bsname}"}>
       <div class="card-body">
         <%= render AppnameWeb.Modulename.ClassnameView, "section_menu.html", Map.merge(assigns, %{
             show_search: false,
@@ -28,19 +28,19 @@
   <tbody>
 <%= for classname <- @classnames do %>
     <tr>
-      <td style="background-color: <%= classname.colour %>; color: #FFF;" width="22">
+      <td style={"background-color: #{classname.colour}; color: #FFF;"} width="22">
         <%= central_component "icon", icon: classname.icon %>
       </td>
       <td><%= classname.name %></td>
 
       <td>
-        <a href="<%= Routes.appname_classname_path(@conn, :show, classname.id) %>" class="btn btn-secondary btn-sm">
+        <a href={Routes.appname_classname_path(@conn, :show, classname.id)} class="btn btn-secondary btn-sm">
           Show
         </a>
       </td>
 
       <td>
-        <a href="<%= Routes.appname_classname_path(@conn, :edit, classname.id) %>" class="btn btn-secondary btn-sm">
+        <a href={Routes.appname_classname_path(@conn, :edit, classname.id)} class="btn btn-secondary btn-sm">
           Edit
         </a>
       </td>

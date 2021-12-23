@@ -16,8 +16,8 @@ defmodule Appname.Modulename.Classname do
   @spec changeset(Map.t(), Map.t()) :: Ecto.Changeset.t()
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:part1_id, :part2_id])
-    |> validate_required([:part1_id, :part2_id])
+    |> cast(params, ~w(part1_id part2_id)a)
+    |> validate_required(~w(part1_id part2_id)a)
   end
 
   @spec authorize(Atom.t(), Plug.Conn.t(), Map.t()) :: Boolean.t()

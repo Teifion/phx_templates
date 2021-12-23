@@ -16,7 +16,7 @@
 
 <div class="row section-menu">
   <div class="col-md-12">
-    <div class="card border-<%= bsname %>">
+    <div class={"card border-#{bsname}"}>
       <div class="card-body">
         <%= render AppnameWeb.Modulename.ClassnameView, "section_menu.html", Map.merge(assigns, %{
             show_search: false,
@@ -25,14 +25,16 @@
         <hr />
 
         <div class="float-right">
-          <a href="<%= Routes.appname_classname_path(@conn, :edit, @classname) %>" class="btn btn-outline-<%= bsname %>">
+          <a href={Routes.appname_classname_path(@conn, :edit, @classname)} class={"btn btn-outline-#{bsname}"}>
             <i class="far fa-fw fa-wrench"></i>
             Edit classname
           </a>
         </div>
 
-      <h3>
+      <h3 style={"color: #{@classname.colour}"}>
         <%= @classname.name %>
+        &nbsp;
+        <i class={"far fa-fw #{@classname.icon}"}></i>
       </h3>
       <br />
       <ul class="nav nav-tabs" role="tablist" id="the_tabs">

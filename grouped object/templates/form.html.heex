@@ -1,7 +1,7 @@
 <% {_fg, _bg, bsname} = colours() %>
 
-<link rel="stylesheet" href='<%= Routes.static_path(@conn, "/css/select2.css") %>'>
-<script src='<%= Routes.static_path(@conn, "/js/select2.js") %>'></script>
+<link rel="stylesheet" href={Routes.static_path(@conn, "/css/select2.css")}>
+<script src={Routes.static_path(@conn, "/js/select2.js")}></script>
 
 <%= central_component "icon_dropdown_js", [] %>
 
@@ -44,13 +44,13 @@
 
   <div class="form-group">
     <%= if @changeset.data.id do %>
-      <a href="<%= Routes.appname_classname_path(@conn, :show, @classname) %>" class="btn btn-secondary btn-outline">
+      <a href={Routes.appname_classname_path(@conn, :show, @classname)} class="btn btn-secondary btn-outline">
         Cancel
       </a>
 
-      <input type="submit" value="Save changes" name="form.submitted" class="btn btn-<%= bsname %> float-right" />
+      <input type="submit" value="Save changes" name="form.submitted" class={"btn btn-#{bsname} float-right"} />
     <% else %>
-      <input type="submit" value="Create" name="form.submitted" class="btn btn-<%= bsname %> float-right" />
+      <input type="submit" value="Create" name="form.submitted" class={"btn btn-#{bsname} float-right"} />
     <% end %>
   </div>
 <% end %>
