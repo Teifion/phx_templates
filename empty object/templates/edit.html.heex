@@ -1,15 +1,15 @@
-<% {_fg, _bg, bsname} = colours() %>
+<% bsname = view_colour() %>
 
 <%= render AppnameWeb.Modulename.GeneralView, "sub_menu.html", Map.merge(assigns, %{active: "classnames"}) %>
 
-<div class="row section-menu">
+<div class="row">
   <div class="col-md-12">
     <div class={"card border-#{bsname}"}>
       <div class="card-body">
         <%= render AppnameWeb.Modulename.ClassnameView, "section_menu.html", Map.merge(assigns, %{
-          quick_search: "",
+          basic_search: "",
           show_search: false,
-          active: "new"
+          active: "edit"
         })
         %>
 
@@ -20,6 +20,7 @@
 
 <hr />
 <%= link raw("<i class='far fa-fw fa-trash'></i> Delete"), to: Routes.appname_classname_path(@conn, :delete, @classname), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-outline" %>
+
       </div>
     </div>
   </div>

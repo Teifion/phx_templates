@@ -1,4 +1,4 @@
-<% {_fg, _bg, bsname} = colours() %>
+<% bsname = view_colour() %>
 
 <link rel="stylesheet" href={Routes.static_path(@conn, "/css/select2.css")}>
 <script src={Routes.static_path(@conn, "/js/select2.js")}></script>
@@ -12,45 +12,49 @@
     </div>
   <% end %>
 
-  <div class="form-group row">
+  <div class="row">
     <div class="col-lg-6">
-      <%= label f, :name, class: "control-label" %>
-      <%= text_input f, :name, class: "form-control", autofocus: :autofocus %>
-      <%= error_tag f, :name %>
+      <div class="form-group my-2">
+        <%= label f, :name, class: "control-label" %>
+        <%= text_input f, :name, class: "form-control", autofocus: :autofocus %>
+        <%= error_tag f, :name %>
+      </div>
     </div>
 
     <%= if Enum.count(@groups) > 1 do %>
       <div class="col-lg-6">
-        <label for="classname_group_id" class="control-label">Group</label>
-        <%= central_component "icon_dropdown", %{
-          name: "classname[group_id]",
-          id: "classname_group",
-          selected: f.data.group_id || Map.get(@changeset.changes, :group_id, nil),
-          enumerable: @groups
-        } %>
+        <div class="form-group my-2">
+          <label for="classname_group_id" class="control-label">Group</label>
+          <%= central_component "icon_dropdown", %{
+            name: "classname[group_id]",
+            id: "classname_group",
+            selected: f.data.group_id || Map.get(@changeset.changes, :group_id, nil),
+            enumerable: @groups
+          } %>
+        </div>
       </div>
     <% else %>
       <%= hidden_input f, :group_id %>
     <% end %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group my-2">
     <%= input_with_type f, :colour, "color" %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group my-2">
     <%= central_component "fa5_icon_picker", %{form: f, field: :icon} %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group my-4">
     <%= if @changeset.data.id do %>
       <a href={Routes.appname_classname_path(@conn, :show, @classname)} class="btn btn-secondary btn-outline">
         Cancel
       </a>
 
-      <input type="submit" value="Save changes" name="form.submitted" class={"btn btn-#{bsname} float-right"} />
+      <input type="submit" value="Save changes" name="form.submitted" class={"btn btn-#{bsname} float-end"} />
     <% else %>
-      <input type="submit" value="Create" name="form.submitted" class={"btn btn-#{bsname} float-right"} />
+      <input type="submit" value="Create" name="form.submitted" class={"btn btn-#{bsname} float-end"} />
     <% end %>
   </div>
 <% end %>

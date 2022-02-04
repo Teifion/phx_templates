@@ -10,8 +10,10 @@ defmodule AppnameWeb.Modulename.ClassnameController do
     action: {Phoenix.Controller, :action_name},
     user: {Central.Account.AuthLib, :current_user}
 
-  plug AssignPlug,
-    sidemenu_active: "modulename"
+  plug(AssignPlug,
+    site_menu_active: "modulename",
+    sub_menu_active: "classname"
+  )
 
   plug :add_breadcrumb, name: 'Modulename', url: '/appname'
   plug :add_breadcrumb, name: 'Classnames', url: '/appname/classnames'
@@ -20,7 +22,7 @@ defmodule AppnameWeb.Modulename.ClassnameController do
   def index(conn, params) do
     classnames = Modulename.list_classnames(
       search: [
-        simple_search: Map.get(params, "s", "") |> String.trim,
+        basic_search: Map.get(params, "s", "") |> String.trim,
       ],
       order_by: "Name (A-Z)"
     )

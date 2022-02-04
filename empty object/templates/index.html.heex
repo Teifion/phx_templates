@@ -1,4 +1,4 @@
-<% {_fg, _bg, bsname} = colours() %>
+<% bsname = view_colour() %>
 
 <%= render AppnameWeb.Modulename.GeneralView, "sub_menu.html", Map.merge(assigns, %{active: "classnames"}) %>
 
@@ -11,10 +11,14 @@
             active: (cond do
               @conn.params["search"] != nil -> "search"
               # @filter != nil -> @filter
-              true -> "index"
+              true -> "list"
             end)
         }) %>
         <br /><br />
+
+<%= if @conn.params["search"] != nil do %>
+  <%= render AppnameWeb.Modulename.ClassnameView, "search.html", assigns %>
+<% end %>
 
 <h4>Listing Classnames</h4>
 

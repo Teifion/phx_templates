@@ -1,4 +1,4 @@
-<% {_fg, _bg, bsname} = colours() %>
+<% bsname = view_colour() %>
 
 <%= render AppnameWeb.Modulename.GeneralView, "sub_menu.html", Map.merge(assigns, %{active: "classnames"}) %>
 
@@ -7,9 +7,9 @@
     <div class={"card border-#{bsname}"}>
       <div class="card-body">
         <%= render AppnameWeb.Modulename.ClassnameView, "section_menu.html", Map.merge(assigns, %{
-          quick_search: "",
+          basic_search: "",
           show_search: false,
-          active: "new"
+          active: "edit"
         })
         %>
 

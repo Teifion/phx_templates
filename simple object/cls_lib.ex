@@ -6,13 +6,13 @@ defmodule Appname.Modulename.ClassnameLib do
   @spec icon :: String.t()
   def icon, do: "far fa-???"
 
-  @spec colours :: {String.t(), String.t(), String.t()}
-  def colours, do: Central.Helpers.StylingHelper.colours(:default)
+  @spec colours :: atom
+  def colours, do: :default
 
   @spec make_favourite(Map.t()) :: Map.t()
   def make_favourite(classname) do
     %{
-      type_colour: colours() |> elem(0),
+      type_colour: StylingHelper.colours(colours()) |> elem(0),
       type_icon: icon(),
 
       item_id: classname.id,
@@ -59,7 +59,7 @@ defmodule Appname.Modulename.ClassnameLib do
       where: classnames.id in ^id_list
   end
 
-  def _search(query, :simple_search, ref) do
+  def _search(query, :basic_search, ref) do
     ref_like = "%" <> String.replace(ref, "*", "%") <> "%"
 
     from classnames in query,
