@@ -4,10 +4,10 @@ defmodule Appname.Modulename.ClassnameLib do
 
   # Functions
   @spec icon :: String.t()
-  def icon, do: "far fa-???"
+  def icon, do: "fa-regular fa-???"
 
   @spec colours :: atom
-  def colours, do: :default
+  def colour, do: :default
 
   @spec make_favourite(Map.t()) :: Map.t()
   def make_favourite(classname) do

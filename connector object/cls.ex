@@ -1,6 +1,5 @@
 defmodule Appname.Modulename.Classname do
   use CentralWeb, :schema
-  alias __MODULE__
 
   @primary_key false
   schema "modulename_part1_part2s" do

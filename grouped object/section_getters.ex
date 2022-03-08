@@ -1,5 +1,4 @@
-  alias Appname.Modulename.Classname
-  alias Appname.Modulename.ClassnameLib
+  alias Appname.Modulename.{Classname, ClassnameLib}
 
   @spec classname_query(List.t()) :: Ecto.Query.t()
   def classname_query(args) do

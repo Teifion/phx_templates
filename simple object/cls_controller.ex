@@ -2,8 +2,7 @@ defmodule AppnameWeb.Modulename.ClassnameController do
   use CentralWeb, :controller
 
   alias Appname.Modulename
-  alias Appname.Modulename.Classname
-  alias Appname.Modulename.ClassnameLib
+  alias Appname.Modulename.{Classname, ClassnameLib}
 
   plug Bodyguard.Plug.Authorize,
     policy: Appname.Modulename.Classname,

@@ -1,5 +1,4 @@
-  alias Appname.Modulename.Part1Part2
-  alias Appname.Modulename.Part1Part2Lib
+  alias Appname.Modulename.{Part1Part2, Part1Part2Lib}
   @doc """
   Returns the list of part1_part2s.
 
