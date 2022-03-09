@@ -6,19 +6,19 @@ defmodule Appname.Modulename.ClassnameLib do
   @spec icon :: String.t()
   def icon, do: "fa-regular fa-???"
 
-  @spec colours :: atom
+  @spec colour :: atom
   def colour, do: :default
 
   @spec make_favourite(Map.t()) :: Map.t()
   def make_favourite(classname) do
     %{
-      type_colour: StylingHelper.colours(colours()) |> elem(0),
+      type_colour: colour(),
       type_icon: icon(),
 
       item_id: classname.id,
       item_type: "appname_modulename_classname",
-      item_colour: StylingHelper.colours(colours()) |> elem(0),
-      item_icon: Appname.Modulename.ClassnameLib.icon(),
+      item_colour: colour(),
+      item_icon: icon(),
       item_label: "#{classname.name}",
 
       url: "/modulename/classnames/#{classname.id}"
