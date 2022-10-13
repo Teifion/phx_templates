@@ -1,4 +1,5 @@
 defmodule AppnameWeb.Modulename.ClassnameControllerTest do
+  @moduledoc false
   use AppnameWeb.ConnCase
 
   alias Appname.Modulename

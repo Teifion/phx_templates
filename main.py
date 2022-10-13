@@ -25,6 +25,7 @@ def peform_empty(parts):
     "templates/new.html.heex",
     "templates/section_menu.html.heex",
     "templates/show.html.heex",
+    "templates/search.html.heex",
     "templates/tab_details.html.heex",
     "tests/section_test.exs",
     "tests/cls_controller_test.exs",

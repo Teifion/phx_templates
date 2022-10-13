@@ -1,5 +1,6 @@
 defmodule Appname.Modulename.ClassnameLib do
-  use CentralWeb, :library
+  @moduledoc false
+  use AppnameWeb, :library
   alias Appname.Modulename.Classname
 
   # Functions

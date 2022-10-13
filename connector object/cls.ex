@@ -1,5 +1,6 @@
 defmodule Appname.Modulename.Classname do
-  use CentralWeb, :schema
+  @moduledoc false
+  use AppnameWeb, :schema
 
   @primary_key false
   schema "modulename_part1_part2s" do
@@ -15,8 +16,8 @@ defmodule Appname.Modulename.Classname do
   @spec changeset(Map.t(), Map.t()) :: Ecto.Changeset.t()
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, ~w(part1_id part2_id)a)
-    |> validate_required(~w(part1_id part2_id)a)
+      |> cast(params, ~w(part1_id part2_id)a)
+      |> validate_required(~w(part1_id part2_id)a)
   end
 
   @spec authorize(Atom.t(), Plug.Conn.t(), Map.t()) :: Boolean.t()

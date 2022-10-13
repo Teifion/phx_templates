@@ -1,5 +1,6 @@
 defmodule Appname.Modulename.Part1Part2Lib do
-  use CentralWeb, :library
+  @moduledoc false
+  use AppnameWeb, :library
   alias Appname.Modulename.Part1Part2
 
   # Queries

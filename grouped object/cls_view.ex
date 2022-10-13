@@ -1,4 +1,5 @@
 defmodule AppnameWeb.Modulename.ClassnameView do
+  @moduledoc false
   use AppnameWeb, :view
 
   @spec view_colour() :: atom

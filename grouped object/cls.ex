@@ -1,11 +1,12 @@
 defmodule Appname.Modulename.Classname do
-  use CentralWeb, :schema
+  @moduledoc false
+  use AppnameWeb, :schema
 
   schema "modulename_classnames" do
     field :name, :string
     field :icon, :string
     field :colour, :string
-    belongs_to :group, Central.Account.Group
+    belongs_to :group, Appname.Account.Group
 
     timestamps()
   end
@@ -16,11 +17,11 @@ defmodule Appname.Modulename.Classname do
   @spec changeset(Map.t(), Map.t()) :: Ecto.Changeset.t()
   def changeset(struct, params \\ %{}) do
     params = params
-    |> trim_strings(~w(name)a)
+      |> trim_strings(~w(name)a)
 
     struct
-    |> cast(params, ~w(name icon colour group_id)a)
-    |> validate_required(~w(name icon colour group_id)a)
+      |> cast(params, ~w(name icon colour group_id)a)
+      |> validate_required(~w(name icon colour group_id)a)
   end
 
   @spec authorize(Atom.t(), Plug.Conn.t(), Map.t()) :: Boolean.t()

@@ -1,5 +1,6 @@
 defmodule AppnameWeb.Modulename.ClassnameController do
-  use CentralWeb, :controller
+  @moduledoc false
+  use AppnameWeb, :controller
 
   alias Appname.Modulename
   alias Appname.Modulename.{Classname, ClassnameLib}
@@ -7,7 +8,7 @@ defmodule AppnameWeb.Modulename.ClassnameController do
   plug Bodyguard.Plug.Authorize,
     policy: Appname.Modulename.Classname,
     action: {Phoenix.Controller, :action_name},
-    user: {Central.Account.AuthLib, :current_user}
+    user: {Appname.Account.AuthLib, :current_user}
 
   plug(AssignPlug,
     site_menu_active: "modulename",

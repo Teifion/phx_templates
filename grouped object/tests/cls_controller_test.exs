@@ -1,4 +1,5 @@
 defmodule AppnameWeb.Modulename.ClassnameControllerTest do
+  @moduledoc false
   use AppnameWeb.ConnCase
 
   alias Appname.Modulename
@@ -130,7 +131,7 @@ defmodule AppnameWeb.Modulename.ClassnameControllerTest do
       assert resp.private[:phoenix_flash]["warning"] == "Unable to access this classname"
       assert redirected_to(resp) == Routes.modulename_classname_path(conn, :index)
     end
-    
+
     test "renders error for deleting nil item", %{conn: conn} do
       assert_error_sent 404, fn ->
         delete(conn, Routes.modulename_classname_path(conn, :delete, -1))
